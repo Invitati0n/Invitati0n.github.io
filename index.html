@@ -133,6 +133,18 @@
             color: #ac7d07; /* Gold color */
             font-weight: 450;
         }
+        .map-container {
+            display: none;
+            /* margin-top: 10px; */
+            margin-bottom: 50px
+        }
+
+        .map-container img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        
+        }
 
         button {
             padding: 10px 20px;
@@ -232,6 +244,11 @@
             <p>8:00 PM onwards</p><br>
             <p><strong>Aahil Villa</strong><br>G-57, Eco Pk Rd, Pocket N, Madanpur Khadar <br>Near: Kalindi Kunj metro station,<br> New Delhi 110076</p><br><br>
         </div>
+        <div class="map-container" id="map-container">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Aahil+Villa+G-57,+Eco+Pk+Rd,+Pocket+N,+Madanpur+Khadar,+New+Delhi+110076" target="_blank">
+                <img src="maps.png" alt="Google Maps">
+            </a>
+        </div>
     </div>
 
     <script>
@@ -259,9 +276,21 @@
             }
         }, 1000);
 
+        // function toggleInvitation() {
+        //     var invitation = document.getElementById("invitation");
+        //     invitation.style.display = (invitation.style.display === "none" || invitation.style.display === "") ? "block" : "none";
+        // }
         function toggleInvitation() {
             var invitation = document.getElementById("invitation");
-            invitation.style.display = (invitation.style.display === "none" || invitation.style.display === "") ? "block" : "none";
+            var mapContainer = document.getElementById("map-container");
+            var isVisible = (invitation.style.display === "block");
+            invitation.style.display = isVisible ? "none" : "block";
+            mapContainer.style.display = isVisible ? "none" : "block";
+        }
+        function openMap() {
+            var address = "Aahil+Villa+G-57,+Eco+Pk+Rd,+Pocket+N,+Madanpur+Khadar,+New+Delhi+110076";
+            var url = `https://www.google.com/maps/dir/?api=1&destination=${address}&travelmode=driving`;
+            window.open(url, "_blank");
         }
     </script>
 </body>
